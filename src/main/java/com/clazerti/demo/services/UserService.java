@@ -18,8 +18,12 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User findById(Long id) {
+    public User findById(Long id) throws Exception {
         Optional<User> user = userRepository.findById(id);
-        return user.orElse(null);
+        if (!user.isPresent()) {
+            throw new Exception("Usuário não encontrado");
+        }
+
+        return user.get();
     }
 }
