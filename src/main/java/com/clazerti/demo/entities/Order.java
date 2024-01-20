@@ -16,7 +16,7 @@ public class Order implements Serializable {
 
     private Instant created_at;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id")
     private User client;
 
@@ -25,6 +25,10 @@ public class Order implements Serializable {
     public Order(Instant created_at, User client) {
         this.created_at = created_at;
         this.client = client;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public Instant getCreated_at() {

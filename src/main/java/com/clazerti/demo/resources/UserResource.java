@@ -24,7 +24,7 @@ public class UserResource {
     }
 
     @GetMapping("/user/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id) throws Exception {
+    public ResponseEntity<User> getById(@PathVariable Long id) throws Exception {
         User user = userService.findById(id);
         return ResponseEntity.ok().body(user);
     }

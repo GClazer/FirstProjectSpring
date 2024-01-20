@@ -1,5 +1,6 @@
 package com.clazerti.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -19,7 +20,8 @@ public class User implements Serializable {
     private String email;
     private String password;
 
-    @OneToMany(mappedBy = "client")
+    @JsonIgnore
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     private final List<Order> orders = new ArrayList<>();
 
     public User() {}
